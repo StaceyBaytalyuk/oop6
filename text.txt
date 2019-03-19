@@ -1,0 +1,5 @@
+Student{id=1, surname='Petrov', firstName='Petr', secondName='Petrovich', birthday=01.02.1998, faculty='Computer Science', address='Stroiteley 45', phone='3456754', course=3, group=3141}
+Student{id=2, surname='Ivanov', firstName='Ivan', secondName='Ivanovich', birthday=17.09.1999, faculty='Computer Science', address='Mira 12', phone='778611', course=2, group=2141}
+Student{id=3, surname='Sidorov', firstName='Sidor', secondName='Sidorovich', birthday=30.05.2000, faculty='Software Engineering', address='Yuzhnaya 59', phone='001343', course=1, group=1151}
+Student{id=4, surname='Vasiliev', firstName='Vasiliy', secondName='Vasilievich', birthday=23.01.2000, faculty='Computer Science', address='Sobornaya 3', phone='765434', course=2, group=2141}
+Student{id=5, surname='Mihaylov', firstName='Mihail', secondName='Mihaylovich', birthday=08.11.1999, faculty='Computer Science', address='Pogranichnaya 27', phone='08467', course=2, group=2141}

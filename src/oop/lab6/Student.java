@@ -1,10 +1,11 @@
 package oop.lab6;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Student {
+public class Student implements Serializable {
     private int id;
     private String surname, firstName, secondName;
     private LocalDate birthday;
@@ -26,18 +27,35 @@ public class Student {
 
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         return "Student{" +
                 "id=" + id +
                 ", surname='" + surname + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
-                ", birthday=" + birthday +
+                ", birthday=" +  formatter.format(birthday) +
                 ", faculty='" + faculty + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", course=" + course +
                 ", group=" + group +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return id == student.id &&
+                surname.equals(student.surname) &&
+                firstName.equals(student.firstName) &&
+                secondName.equals(student.secondName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, surname, firstName, secondName);
     }
 
     public int getId() {

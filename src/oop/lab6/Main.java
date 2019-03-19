@@ -1,5 +1,6 @@
 package oop.lab6;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -22,7 +23,6 @@ public class Main {
                 "8) Show students born after year\n" +
                 "9) Show group list\n" +
                 "10) Show all records\n" +
-                "11) Generate 5 records\n" +
                 "0) Exit"
         );
 
@@ -34,25 +34,25 @@ public class Main {
                 case 0: System.exit(0);
 
                 case 1: {
-                    System.out.println("Enter name of file:");
+                    System.out.print("Enter name of file: ");
                     processor.readTextFile(in.next());
                     break;
                 }
 
                 case 2: {
-                    System.out.println("Enter name of file: ");
+                    System.out.print("Enter name of file: ");
                     processor.readBinaryFile(in.next());
                     break;
                 }
 
                 case 3: {
-                    System.out.println("Enter name of file: ");
+                    System.out.print("Enter name of file: ");
                     processor.writeTextFile(in.next());
                     break;
                 }
 
                 case 4: {
-                    System.out.println("Enter name of file: ");
+                    System.out.print("Enter name of file: ");
                     processor.writeBinaryFile(in.next());
                     break;
                 }
@@ -61,7 +61,7 @@ public class Main {
                     if ( processor.addRecord() ) {
                         System.out.println("Successfully added!");
                     } else {
-                        System.out.println("Can't add record, no memory left");
+                        System.out.println("Can't add record");
                     }
                     break;
                 }
@@ -71,7 +71,7 @@ public class Main {
                     if ( processor.deleteRecord(in.nextInt()) ) {
                         System.out.println("Successfully deleted!");
                     } else {
-                        System.out.println("Student is not found!");
+                        System.out.println("Student is not found");
                     }
                     break;
                 }
@@ -80,8 +80,8 @@ public class Main {
                     System.out.print("Enter faculty: ");
                     in.nextLine();
                     String faculty = in.nextLine();
-                    Student[] students = processor.searchFaculty(faculty);
-                    if ( students.length > 0 ) {
+                    ArrayList<Student> students = processor.searchFaculty(faculty);
+                    if ( students.size() > 0 ) {
                         processor.printStudents(students, faculty);
                     } else {
                         System.out.println("No students from "+faculty);
@@ -92,8 +92,8 @@ public class Main {
                 case 8: {
                     System.out.print("Enter year: ");
                     int year = in.nextInt();
-                    Student[] students = processor.searchAfterYear(year);
-                    if ( students.length > 0 ) {
+                    ArrayList<Student> students = processor.searchAfterYear(year);
+                    if ( students.size() > 0 ) {
                         processor.printStudents(students, "Born after "+year);
                     } else {
                         System.out.println("No students born after "+year);
@@ -104,8 +104,8 @@ public class Main {
                 case 9: {
                     System.out.print("Enter group: ");
                     int group = in.nextInt();
-                    Student[] students = processor.searchGroup(group);
-                    if ( students.length > 0 ) {
+                    ArrayList<Student> students = processor.searchGroup(group);
+                    if ( students.size() > 0 ) {
                         processor.printStudents(students, "Group "+group);
                     } else {
                         System.out.println("No students from "+group);
@@ -115,15 +115,6 @@ public class Main {
 
                 case 10: {
                     processor.showAll();
-                    break;
-                }
-
-                case 11: {
-                    if ( processor.addSomeRecords() ) {
-                        System.out.println("5 records are successfully added");
-                    } else {
-                        System.out.println("Can't add records, no memory left");
-                    }
                     break;
                 }
 
