@@ -3,7 +3,6 @@ package oop.lab6;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 public class Student implements Serializable {
     private int id;
@@ -11,6 +10,7 @@ public class Student implements Serializable {
     private LocalDate birthday;
     private String faculty, address, phone;
     private int course, group;
+    private static final long serialVersionUID = 1;
 
     private Student(StudentBuilder builder) {
         id = builder.id;
@@ -28,38 +28,26 @@ public class Student implements Serializable {
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        return "Student{" +
+        return "Student {" +
                 "id=" + id +
-                ", surname='" + surname + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
+                ", surname=" + surname +
+                ", firstName=" + firstName +
+                ", secondName=" + secondName +
                 ", birthday=" +  formatter.format(birthday) +
-                ", faculty='" + faculty + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
+                ", faculty=" + faculty +
+                ", address=" + address +
+                ", phone=" + phone +
                 ", course=" + course +
                 ", group=" + group +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return id == student.id &&
-                surname.equals(student.surname) &&
-                firstName.equals(student.firstName) &&
-                secondName.equals(student.secondName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, surname, firstName, secondName);
-    }
-
     public int getId() {
         return id;
+    }
+
+    public String getSurname() {
+        return surname;
     }
 
     public LocalDate getBirthday() {
@@ -142,5 +130,4 @@ public class Student implements Serializable {
             return new Student(this);
         }
     }
-
 }
